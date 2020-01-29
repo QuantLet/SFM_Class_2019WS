@@ -1,0 +1,11 @@
+
+Name of Quantlet: 'SFM_Portfolio_Allocation'
+
+Published in: 'Statistics of Financial Markets 1'
+
+Description: 'Returns the Portfolio Allocation in a one-period Binomial-Model, for different Pricing Kernels and utility-functions'
+
+Keywords: 'Portfolio Allocation, Pricing Kernel, Binomial Model, Utility, Risk Aversion, Risk Proclivity'
+
+Author: 'Pablo Spitzley Rodriguez, Andrey Lyan' 
+
