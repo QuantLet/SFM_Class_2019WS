@@ -1,0 +1,9 @@
+Name of QuantLet : 'TCopulaPortfolioLossDensity'
+
+Published in : 'SFM Class' 
+
+Description : 'Computes the density function of the loss in a portfolio of bonds or other credit instruments using a one-factor t copula. The marginal densities of default times are implemented as poisson distributions using constant default intensities. After computing the portfolio loss densities for various values of the dependence parameter rho, these densities are plotted.'
+
+Keywords : 'Copulae, Density plot, t distribution, simulation, gaussian copula, portfolio loss, credit risk, hazard rate'
+
+Author : 'Kainat Khowaja and Vanessa Emanuela Guarino'
