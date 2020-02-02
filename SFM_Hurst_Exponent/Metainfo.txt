@@ -1,5 +1,3 @@
-```yaml
-
 
 Name of Quantlet: 'SFM_Hurst_Exponent'
 
@@ -13,4 +11,4 @@ Keywords: 'Hurst Exponent, Hurst, Autoregressive Model, AR, Random Walk, Bitcoin
 
 Author: 'Julian Winkel' 
 
-```
+
