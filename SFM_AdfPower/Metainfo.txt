@@ -1,0 +1,13 @@
+Name of Quantlet: ‘SFEAdfPower’
+
+Published in: ‘Statistics of Financial Markets I’
+
+Description: ‘Simulation study for the power and level of the Augmented Dickey-Fuller Test for different AR- and MA-parameters as well as different number of lags.'
+
+Keywords: ‘ADF, time series, stationary, Augmented Dickey-Fuller, unit root, test, power, level, simulation’
+
+Author: ‘Lucas Umann, Julian Schneider’
+
+Input: 'Number of simulations, length of simulated time series, AR- and MA- coefficients’
+
+Output: ‘Graphs for the power and level of the ADF-test, table of results for smallest and largest lags.'
