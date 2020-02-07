@@ -1,0 +1,18 @@
+Name of QuantLet: SFEMA1_plotma1
+
+Published in: Statistics of Financial Markets
+
+Description: 'Plots two realizations of an MA(1) (moving average) process with MA coefficient beta,  simulate from an arima model with innovations n1 and n2.'
+
+Keywords: moving-average, stationary, linear, discrete, simulation, time-series, process, stochastic-process, stochastic, plot, graphical representation
+
+Author: Ranqing Song
+
+Submitted: January 29 2020 by Ranqing Song
+
+Input: 
+- n1, n2 : lags
+- beta : moving average coefficient 
+
+
+Example: 'An example is produced for beta=0.8, n1=100 and n2=1000.' 
