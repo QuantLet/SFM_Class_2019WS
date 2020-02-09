@@ -1,4 +1,4 @@
-Name of QuantLet : 'HigherOrderGreeks/greeksInteractivePlots'
+Name of QuantLet : 'Charm'
 
 Published in : 'SFM Class' 
 

@@ -1,4 +1,4 @@
-Name of QuantLet : 'HigherOrderGreeks/charmAdjustedDeltaHedging'
+Name of QuantLet : 'charmAdjustedDeltaHedging'
 
 Published in : 'SFM Class' 
 
