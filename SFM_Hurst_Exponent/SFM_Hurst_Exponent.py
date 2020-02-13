@@ -1,39 +1,37 @@
-
-import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
-
 from hurst import compute_Hc, random_walk
-from AR import ar
+from SFM_Hurst_Exponent.AR import ar
+import os
+os.chdir('SFM_Hurst_Exponent/')
 
 # Execute Download
-import binance_download
+# from SFM_Hurst_Exponent import binance_download
 
 # Read and select Close price (Header: Timestamp, OHLCV, ...)
-p               = pd.read_json('Binance_BTCUSDT_1m_1483228800000-1580342400000.json')
-df              = p[[4]] 
-df['changes']   = df.pct_change()
-changevec       = df['changes'].dropna() + 1
-changevec       = changevec.dropna()
-
+p = pd.read_json('Binance_BTCUSDT_1m_1577836800000-1580342400000.json')
+df = p[[4]]
+df['changes'] = df.pct_change()
+changevec = df['changes'].dropna() + 1
+changevec = changevec.dropna()
 
 random_changes = np.array(changevec)
-series = np.cumprod(random_changes) 
+series = np.cumprod(random_changes)
 
 H_l = []
 c_l = []
 data_l = []
 mse_l = []
-series_splits = np.array_split(series, 1000)
+series_splits = np.array_split(series, 100)
 
 for currseries in series_splits:
     H, c, data = compute_Hc(currseries, kind='price', simplified=True)
     H_l.append(H)
     c_l.append(c)
     data_l.append(data)
-    mse_l.append(ar(currseries - 1)) # Get back to simple returns around 0
+    mse_l.append(ar(currseries - 1))  # Get back to simple returns around 0
 
 # Evaluate Hurst equation for complete data set
 H, c, data = compute_Hc(series, kind='price', simplified=True)
@@ -50,11 +48,11 @@ mse_supposedly_low = np.array(mse_l)[idx]
 not_idx = np.where(np.array(H_l) <= cutoff_int)
 mse_supposedly_high = np.array(mse_l)[not_idx]
 
-ttestresult = scipy.stats.ttest_ind(mse_supposedly_high, mse_supposedly_low, equal_var = False) 
-print(ttestresult[1]/2) # One sided test
+ttestresult = scipy.stats.ttest_ind(mse_supposedly_high, mse_supposedly_low, equal_var=False)
+print(ttestresult[1] / 2)  # One sided test
 
 # Hurst Exponent vs MSE
-plt.gcf().subplots_adjust(0.2) # Compensate ax labels
+plt.gcf().subplots_adjust(0.2)  # Compensate ax labels
 plt.ylim(0, 0.0001)
 plt.scatter(H_l, mse_l)
 plt.xlabel('Hurst Exponent')
@@ -71,7 +69,7 @@ plt.savefig('Bitcoin_Close_Prices.pdf')
 plt.show()
 
 # Autocorrelation of BTC
-plt.acorr(df['changes'][2:50000], maxlags=9) # same as [2:] (dropna) but way faster!
+plt.acorr(df['changes'][2:50000], maxlags=9)  # same as [2:] (dropna) but way faster!
 plt.title('Autocorrelation of Bitcoin Returns')
 plt.xlabel('Lag')
 plt.ylabel('Autocorrelation')
@@ -89,13 +87,13 @@ plt.show()
 # Plot for subsets, add H as horizontal line 
 plt.plot(H_l)
 plt.title('Hurst Exponent for subsets of BTC/USDT')
-plt.axhline(H, color = 'r')
+plt.axhline(H, color='r')
 plt.savefig('Hurst_Exponent_For_Subsets.pdf')
 plt.show()
 
 # Plot Hurst R/S
 f, ax = plt.subplots()
-ax.plot(data[0], c*data[0]**H, color="deepskyblue")
+ax.plot(data[0], c * data[0] ** H, color="deepskyblue")
 ax.scatter(data[0], data[1], color="purple")
 ax.set_xscale('log')
 ax.set_yscale('log')
@@ -105,4 +103,3 @@ ax.grid(True)
 plt.title('Hurst Exponent')
 plt.savefig('Hurst.pdf')
 plt.show()
-

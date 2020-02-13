@@ -1,16 +1,16 @@
 # requires dateparser package
 import dateparser
 import pytz
-
 from datetime import datetime
 from datetime import timedelta
-from binance.client import Client
-
+from binance.client import Client  # pip install python-binance
 import time
 import json
 import re
 import pandas as pd
 import csv
+import os
+os.chdir('SFM_Hurst_Exponent/')
 
 
 def date_to_milliseconds(date_str):
@@ -30,6 +30,7 @@ def date_to_milliseconds(date_str):
 
     # return the difference in time
     return int((d - epoch).total_seconds() * 1000.0)
+
 
 def interval_to_milliseconds(interval):
     """Convert a Binance interval string to milliseconds
@@ -140,7 +141,7 @@ curr_ticker = client.get_ticker()
 currcoin = ('btcusdt').upper()
 
 # Wrap start and end time around signal
-startdate = __datetime('2017-01-01 00:00:00')
+startdate = __datetime('2019-10-01 00:00:00')
 enddate = __datetime('2020-01-30 00:00:00')
 
 start = "{:%d %b, %Y}".format(startdate)
@@ -156,13 +157,13 @@ try:
 
     # open a file with filename including symbol, interval and start and end converted to milliseconds
     with open(
-        "Binance_{}_{}_{}-{}.json".format(
-            symbol, 
-            interval, 
-            date_to_milliseconds(start),
-            date_to_milliseconds(end)
-        ),
-        'w' # set file write mode
+            "Binance_{}_{}_{}-{}.json".format(
+                symbol,
+                interval,
+                date_to_milliseconds(start),
+                date_to_milliseconds(end)
+            ),
+            'w'  # set file write mode
     ) as f:
         f.write(json.dumps(klines))
 except Exception as e:
