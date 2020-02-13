@@ -47,6 +47,6 @@ main.pdf
 __pycache__/
 .vscode/
 TODO/
-
-
-.Rproj.user
+*.Rproj
+.Rhistory
+.Rproj.user/
