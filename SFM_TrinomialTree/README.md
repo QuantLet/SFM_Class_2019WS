@@ -9,7 +9,7 @@ Name of QuantLet: SFM_TrinomialTree
 
 Published in: SFM_class2019WS
 
-Description: Computes the trinomaial tree of option prices for the american put using the information
+Description: Computes the trinomaial tree of option prices for the american put using the information given on table 26
 
 Keywords: option pricing, trinomial tree, american option, stock price tree, no dividend
 
